@@ -36,6 +36,28 @@ public class AddRemoveElements {
 			System.out.println("FAIL; count mismatch");
 		}
 
+		
+		//remove all elements by clicking 'Delete' button
+		
+		for(WebElement deleteBtn: deleteButtons) {
+			deleteBtn.click();
+		}
+		
+		//verify all 'Delete' buttons removed
+		
+		try {
+			deleteButtons = driver.findElements(By.xpath("//button[contains(text(),'Delete')]"));
+			if(deleteButtons.isEmpty()) {
+				System.out.println("PASS;all elements removed");
+			}
+			else {
+				System.out.println("FAIL;all elements not removed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
 		driver.quit();
 	
 
